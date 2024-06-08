@@ -3,11 +3,6 @@ import IconButton from "./IconButton";
 
 export default function Task() {
   const [checked, setIsChecked] = useState(false);
-  const currentDate = new Date();
-  const currentTime = currentDate.toLocaleTimeString();
-  const formattedDate = currentDate.toLocaleDateString();
-
-  console.log(formattedDate);
 
   return (
     <div className="flex gap-2 bg-text-950 rounded-lg p-3 items-center justify-between">
@@ -17,9 +12,7 @@ export default function Task() {
           <label htmlFor="taskCheck" className="font-semibold text-xl">
             Task
           </label>
-          <p>
-            {currentTime} | {formattedDate}
-          </p>
+          <p>date Value goes here</p>
         </div>
       </div>
 
