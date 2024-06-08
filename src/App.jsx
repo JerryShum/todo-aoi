@@ -23,6 +23,8 @@ export default function App() {
   }
 
   function handleAddTaskObject(object) {
+    if (newTaskValue === "") return;
+
     setTaskObjectArray((taskObjectArray) => [...taskObjectArray, object]);
     console.log(taskObjectArray);
   }
@@ -49,7 +51,7 @@ export default function App() {
             handleAddTaskObject={handleAddTaskObject}
           />
         )}
-        <List />
+        <List taskObjectArray={taskObjectArray} />
       </div>
     </div>
   );

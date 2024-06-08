@@ -12,7 +12,6 @@ export default function AddNewTask({
     const currentTime = currentDate.toLocaleTimeString();
     const formattedDate = currentDate.toLocaleDateString();
     const dateFormat = `${formattedDate} | ${currentTime}`;
-
     let taskObject = {
       taskLabel: taskValue,
       taskPriority: taskPriority,
@@ -33,6 +32,7 @@ export default function AddNewTask({
             type="text"
             className="p-3 rounded-lg bg-white"
             value={taskValue}
+            required
             onChange={(e) => handleTaskInput(e.target.value)}
           />
         </div>
