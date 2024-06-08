@@ -1,7 +1,26 @@
-import { useState } from "react";
+export default function AddNewTask({
+  taskValue,
+  handleTaskInput,
+  taskPriority,
+  handlePriorityValue,
+  handleAddTaskObject,
+}) {
+  function handleSubmit(event) {
+    event.preventDefault();
 
-export default function AddNewTask() {
-  const [newTaskValue, setNewTaskValue] = useState("");
+    const currentDate = new Date();
+    const currentTime = currentDate.toLocaleTimeString();
+    const formattedDate = currentDate.toLocaleDateString();
+    const dateFormat = `${formattedDate} | ${currentTime}`;
+
+    let taskObject = {
+      taskLabel: taskValue,
+      taskPriority: taskPriority,
+      taskDate: dateFormat,
+    };
+
+    handleAddTaskObject(taskObject);
+  }
 
   return (
     <div className="flex gap-10 p-4 px-10 bg-accent-900 rounded-lg border border-black justify-between items-center">
@@ -10,7 +29,12 @@ export default function AddNewTask() {
           <label htmlFor="" className="font-medium">
             Task Label
           </label>
-          <input type="text" className="p-3 rounded-lg bg-white" />
+          <input
+            type="text"
+            className="p-3 rounded-lg bg-white"
+            value={taskValue}
+            onChange={(e) => handleTaskInput(e.target.value)}
+          />
         </div>
 
         <div className="flex flex-col">
@@ -20,7 +44,9 @@ export default function AddNewTask() {
           <select
             name=""
             id=""
-            className="p-3 bg-white font-semibold rounded-lg"
+            className="p-3 bg-white rounded-lg"
+            value={taskPriority}
+            onChange={(e) => handlePriorityValue(e.target.value)}
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -29,7 +55,10 @@ export default function AddNewTask() {
         </div>
       </div>
 
-      <button className="w-1/3 p-3 bg-primary-500 font-semibold text-text-950 rounded-lg">
+      <button
+        className="w-1/3 p-3 bg-primary-500 font-semibold text-text-950 rounded-lg"
+        onClick={(e) => handleSubmit(e)}
+      >
         Add
       </button>
     </div>
