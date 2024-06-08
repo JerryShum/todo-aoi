@@ -1,6 +1,7 @@
 import Button from "./components/AddTaskButton";
 import List from "./components/List";
 import Sort from "./components/Sort";
+import AddNewTask from "./components/AddNewTask";
 import { useState } from "react";
 
 export default function App() {
@@ -19,12 +20,7 @@ export default function App() {
           </Button>
           <Sort />
         </div>
-        {addTaskView && (
-          <input
-            type="text"
-            className="p-3 rounded-lg bg-accent-900 font-semibold"
-          />
-        )}
+        {addTaskView && <AddNewTask />}
         <List />
       </div>
     </div>

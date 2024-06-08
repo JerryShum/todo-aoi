@@ -13,8 +13,8 @@ export default function Sort() {
       onChange={handleSortChange}
       className="p-3 rounded-lg bg-accent-900 font-semibold"
     >
-      <option value={"sortBy"}>Sort By</option>
-      <option>Due Date</option>
+      <option value={"name"}>Alphabetically</option>
+      <option>Date Made</option>
       <option>Priority</option>
     </select>
   );
