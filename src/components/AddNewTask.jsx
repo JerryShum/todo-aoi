@@ -56,7 +56,7 @@ export default function AddNewTask({
       </div>
 
       <button
-        className="w-1/3 p-3 bg-primary-500 font-semibold text-text-950 rounded-lg"
+        className="w-1/3 p-3 bg-primary-500 hover:bg-primary-400 duration-300 font-semibold text-text-950 rounded-lg"
         onClick={(e) => handleSubmit(e)}
       >
         Add

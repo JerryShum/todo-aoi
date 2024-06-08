@@ -5,7 +5,7 @@ export default function Task({ taskLabel, taskPriority, taskDate }) {
   const [checked, setIsChecked] = useState(false);
 
   return (
-    <div className="flex gap-2 bg-text-950 rounded-lg p-3 items-center justify-between">
+    <div className="flex bg-text-950 rounded-lg p-3 items-center justify-between">
       <div className="flex items-center justify-center gap-5">
         <input type="checkbox" name="taskCheck" id="" className="h-5 w-5" />
         <div>
@@ -13,6 +13,10 @@ export default function Task({ taskLabel, taskPriority, taskDate }) {
             {taskLabel}
           </label>
           <p>{taskDate}</p>
+        </div>
+        <div className=" border-l px-2">
+          <h3 className=" font-bold text-xl text-accent-400 ">Priority:</h3>
+          <p className="font-semibold">{taskPriority}</p>
         </div>
       </div>
 
