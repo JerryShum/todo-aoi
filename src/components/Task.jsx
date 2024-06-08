@@ -24,7 +24,7 @@ export default function Task() {
       </div>
 
       <div className="flex gap-5">
-        <IconButton>🤑</IconButton>
+        <IconButton>✖</IconButton>
       </div>
     </div>
   );
