@@ -1,7 +1,7 @@
 import { useState } from "react";
 import IconButton from "./IconButton";
 
-export default function Task() {
+export default function Task({ taskLabel, taskPriority, taskDate }) {
   const [checked, setIsChecked] = useState(false);
 
   return (
@@ -10,9 +10,9 @@ export default function Task() {
         <input type="checkbox" name="taskCheck" id="" className="h-5 w-5" />
         <div>
           <label htmlFor="taskCheck" className="font-semibold text-xl">
-            Task
+            {taskLabel}
           </label>
-          <p>date Value goes here</p>
+          <p>{taskDate}</p>
         </div>
       </div>
 
