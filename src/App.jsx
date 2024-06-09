@@ -9,6 +9,7 @@ export default function App() {
   const [addTaskView, setAddTaskView] = useState(false);
   const [newTaskValue, setNewTaskValue] = useState("");
   const [taskPriority, setTaskPriority] = useState("1");
+  const [taskID, setTaskID] = useState("");
 
   function handleToggleTask() {
     setAddTaskView(() => !addTaskView);
@@ -22,11 +23,19 @@ export default function App() {
     setTaskPriority(value);
   }
 
+  function handleTaskID(value) {
+    setTaskID(value);
+  }
+
   function handleAddTaskObject(object) {
     if (newTaskValue === "") return;
 
     setTaskObjectArray((taskObjectArray) => [...taskObjectArray, object]);
     console.log(taskObjectArray);
+  }
+
+  function handleDeleteTask(taskObject) {
+    taskObjectArray.filter((object) => object.key != taskObject.key);
   }
 
   return (
@@ -52,6 +61,7 @@ export default function App() {
             handleTaskInput={handleTaskInput}
             taskPriority={taskPriority}
             handlePriorityValue={handlePriorityValue}
+            handleTaskID={handleTaskID}
             handleAddTaskObject={handleAddTaskObject}
           />
         )}
@@ -61,7 +71,10 @@ export default function App() {
             Start adding some tasks!
           </div>
         ) : (
-          <List taskObjectArray={taskObjectArray} />
+          <List
+            taskObjectArray={taskObjectArray}
+            handleDeleteTask={handleDeleteTask}
+          />
         )}
       </div>
     </div>

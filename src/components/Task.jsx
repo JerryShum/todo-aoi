@@ -1,8 +1,20 @@
 import { useState } from "react";
 import IconButton from "./IconButton";
 
-export default function Task({ taskLabel, taskPriority, taskDate }) {
+export default function Task({
+  taskLabel,
+  taskPriority,
+  taskDate,
+  taskID,
+  handleDeleteTask,
+}) {
   const [checked, setIsChecked] = useState(false);
+  const currentTask = {
+    taskLabel: taskLabel,
+    taskPriority: taskPriority,
+    taskDate: taskDate,
+    taskID: taskID,
+  };
 
   return (
     <div className="flex bg-text-950 rounded-lg p-3 items-center justify-between">
@@ -21,7 +33,12 @@ export default function Task({ taskLabel, taskPriority, taskDate }) {
       </div>
 
       <div className="flex gap-5">
-        <IconButton>✖</IconButton>
+        <IconButton
+          currentTask={currentTask}
+          handleDeleteTask={handleDeleteTask}
+        >
+          ✖
+        </IconButton>
       </div>
     </div>
   );
