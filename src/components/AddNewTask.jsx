@@ -22,7 +22,7 @@ export default function AddNewTask({
   }
 
   return (
-    <div className="flex gap-10 p-4 px-10 bg-accent-900 rounded-lg border border-black justify-between items-center">
+    <div className="flex gap-10 p-4 px-10 bg-accent-900 rounded-lg justify-between items-center">
       <div className="flex gap-5">
         <div className="flex flex-col">
           <label htmlFor="" className="font-medium">

@@ -30,17 +30,21 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center gap-10">
+    <div className="flex flex-col h-screen items-center justify-center gap-10 overflow-hidden">
       <h1 className=" font-bold text-5xl">TODO LIST</h1>
       <div className="w-1/2 flex flex-col gap-5">
-        <div className="flex justify-between">
+        <div
+          className={
+            "flex " +
+            (taskObjectArray.length == 0 ? "justify-center" : "justify-between")
+          }
+        >
           <AddTaskButton
             addTaskView={addTaskView}
             handleToggleTask={handleToggleTask}
-          >
-            Add Task
-          </AddTaskButton>
-          <Sort />
+          />
+
+          {taskObjectArray.length != 0 && <Sort />}
         </div>
         {addTaskView && (
           <AddNewTask
@@ -51,7 +55,14 @@ export default function App() {
             handleAddTaskObject={handleAddTaskObject}
           />
         )}
-        <List taskObjectArray={taskObjectArray} />
+
+        {taskObjectArray.length == 0 ? (
+          <div className=" w-full items-center text-center ">
+            Start adding some tasks!
+          </div>
+        ) : (
+          <List taskObjectArray={taskObjectArray} />
+        )}
       </div>
     </div>
   );
