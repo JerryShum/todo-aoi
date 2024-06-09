@@ -13,7 +13,6 @@ export default function Task({
     taskLabel: taskLabel,
     taskPriority: taskPriority,
     taskDate: taskDate,
-    taskID: taskID,
   };
 
   return (

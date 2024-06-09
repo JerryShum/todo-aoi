@@ -3,7 +3,6 @@ export default function AddNewTask({
   handleTaskInput,
   taskPriority,
   handlePriorityValue,
-  handleTaskID,
   handleAddTaskObject,
 }) {
   function handleSubmit(event) {
@@ -13,16 +12,13 @@ export default function AddNewTask({
     const currentTime = currentDate.toLocaleTimeString();
     const formattedDate = currentDate.toLocaleDateString();
     const dateFormat = `${formattedDate} | ${currentTime}`;
-    const generatedTaskID = crypto.randomUUID();
 
     let taskObject = {
       taskLabel: taskValue,
       taskPriority: taskPriority,
       taskDate: dateFormat,
-      taskID: generatedTaskID,
     };
 
-    handleTaskID(generatedTaskID);
     handleAddTaskObject(taskObject);
   }
 
@@ -53,9 +49,9 @@ export default function AddNewTask({
             value={taskPriority}
             onChange={(e) => handlePriorityValue(e.target.value)}
           >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
         </div>
       </div>

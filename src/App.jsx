@@ -8,8 +8,7 @@ export default function App() {
   const [taskObjectArray, setTaskObjectArray] = useState([]);
   const [addTaskView, setAddTaskView] = useState(false);
   const [newTaskValue, setNewTaskValue] = useState("");
-  const [taskPriority, setTaskPriority] = useState("1");
-  const [taskID, setTaskID] = useState("");
+  const [taskPriority, setTaskPriority] = useState("Low");
 
   function handleToggleTask() {
     setAddTaskView(() => !addTaskView);
@@ -23,19 +22,33 @@ export default function App() {
     setTaskPriority(value);
   }
 
-  function handleTaskID(value) {
-    setTaskID(value);
-  }
-
   function handleAddTaskObject(object) {
     if (newTaskValue === "") return;
 
+    for (let index = 0; index < taskObjectArray.length; index++) {
+      if (taskObjectArray[index].taskLabel === object.taskLabel) {
+        alert("That task already exists!");
+        setNewTaskValue("");
+        return;
+      }
+    }
+
     setTaskObjectArray((taskObjectArray) => [...taskObjectArray, object]);
+    setNewTaskValue("");
+    setTaskPriority("Low");
     console.log(taskObjectArray);
   }
+  function handleDeleteTask(taskToDelete) {
+    console.log(taskToDelete);
+    console.log(taskObjectArray);
 
-  function handleDeleteTask(taskObject) {
-    taskObjectArray.filter((object) => object.key != taskObject.key);
+    const newArray = taskObjectArray.filter(
+      (arrayObject) =>
+        arrayObject.taskDate !== taskToDelete.taskDate &&
+        arrayObject.taskLabel !== taskToDelete.taskLabel
+    );
+
+    setTaskObjectArray(newArray);
   }
 
   return (
@@ -61,7 +74,6 @@ export default function App() {
             handleTaskInput={handleTaskInput}
             taskPriority={taskPriority}
             handlePriorityValue={handlePriorityValue}
-            handleTaskID={handleTaskID}
             handleAddTaskObject={handleAddTaskObject}
           />
         )}
