@@ -66,7 +66,12 @@ export default function App() {
             handleToggleTask={handleToggleTask}
           />
 
-          {taskObjectArray.length != 0 && <Sort />}
+          {taskObjectArray.length != 0 && (
+            <Sort
+              taskObjectArray={taskObjectArray}
+              setTaskObjectArray={setTaskObjectArray}
+            />
+          )}
         </div>
         {addTaskView && (
           <AddNewTask
